@@ -137,8 +137,18 @@ img { display: block; max-width: none; }
   top: -174px;
   width: 1173px;
   height: 1173px;
-  -webkit-mask-position: -730.444px -858.444px;
-          mask-position: -730.444px -858.444px;
+  /* Figma's render of this blob fades out toward the beam's tip; Chrome keeps it
+     dense there and draws a hard pink point. The second mask layer fades it
+     between page y=120px and y=440px (box is rotated, so it runs bottom-up),
+     fitted against the Figma screenshot. */
+  -webkit-mask-image: url("../assets/svg/color-mask-1.svg"), linear-gradient(to bottom, transparent 559px, #000 879px);
+          mask-image: url("../assets/svg/color-mask-1.svg"), linear-gradient(to bottom, transparent 559px, #000 879px);
+  -webkit-mask-size: 2860.444px 2860.444px, 100% 100%;
+          mask-size: 2860.444px 2860.444px, 100% 100%;
+  -webkit-mask-position: -730.444px -858.444px, 0 0;
+          mask-position: -730.444px -858.444px, 0 0;
+  -webkit-mask-composite: source-in;
+          mask-composite: intersect;
 }
 .glow--c {
   left: calc(50% - 58.31px);
