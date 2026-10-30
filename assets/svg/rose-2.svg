@@ -1,0 +1,24 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="974.973" height="558.453" viewBox="0 0 974.973 558.453" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Rose" filter="url(#filter0_fn_0_43)">
+<path d="M874.973 181.677C874.973 334.536 701.489 458.453 487.486 458.453C273.484 458.453 100 334.536 100 181.677C100 28.8179 199.997 137.401 414 137.401C628.003 137.401 874.973 28.8179 874.973 181.677Z" fill="#E55A7F"/>
+</g>
+<defs>
+<filter id="filter0_fn_0_43" x="0" y="-2.36878e-06" width="974.973" height="558.453" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_0_43"/>
+<feTurbulence type="fractalNoise" baseFrequency="1.8065153360366821 1.8065153360366821" stitchTiles="stitch" numOctaves="3" result="noise" seed="9599" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="effect1_foregroundBlur_0_43" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(255, 255, 255, 0.25)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect2_noise_0_43">
+<feMergeNode in="effect1_foregroundBlur_0_43" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+</defs>
+</svg>

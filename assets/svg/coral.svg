@@ -1,0 +1,24 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1496.98" height="1324.61" viewBox="0 0 1496.98 1324.61" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Coral" filter="url(#filter0_fn_0_86)">
+<path d="M929.967 442.842C1969.54 1275.94 739.877 1164.67 525.874 1164.67C311.872 1164.67 154.995 601.815 154.995 442.842C154.995 283.868 328.478 154.995 542.481 154.995C756.484 154.995 929.967 283.868 929.967 442.842Z" fill="#E65946"/>
+</g>
+<defs>
+<filter id="filter0_fn_0_86" x="0" y="0" width="1496.98" height="1324.61" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="77.4973" result="effect1_foregroundBlur_0_86"/>
+<feTurbulence type="fractalNoise" baseFrequency="1.8065153360366821 1.8065153360366821" stitchTiles="stitch" numOctaves="3" result="noise" seed="9599" />
+<feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise" />
+<feComponentTransfer in="alphaNoise" result="coloredNoise1">
+<feFuncA type="discrete" tableValues="0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.67 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 0.33 "/>
+</feComponentTransfer>
+<feComposite operator="in" in2="effect1_foregroundBlur_0_86" in="coloredNoise1" result="noise1Clipped" />
+<feFlood flood-color="rgba(255, 255, 255, 0.25)" result="color1Flood" />
+<feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1" />
+<feMerge result="effect2_noise_0_86">
+<feMergeNode in="effect1_foregroundBlur_0_86" />
+<feMergeNode in="color1" />
+</feMerge>
+</filter>
+</defs>
+</svg>
