@@ -1,7 +1,8 @@
 /* Velora — loader timeline and entrance animations.
    Loader frames follow the Figma storyboard (Loading Animation, 635:8074):
    01 blank, 0% → 02–04 mark strokes L / C / R → 05–06 hold while the counter
-   reaches 100% → 07 the mark slides left and the wordmark appears → page. */
+   reaches 100% → 07 the mark slides left and the wordmark appears → the
+   wordmark fades away on an empty white screen → page. */
 (function () {
   var root = document.documentElement;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -69,13 +70,17 @@
         anim(el, riseIn, { delay: 350 + i * 60, duration: 500 });
       });
 
-      // Hand over to the page
-      setTimeout(function () {
-        root.classList.remove('is-loading');
-        done();
-        anim(loader, [{ opacity: 1 }, { opacity: 0 }], { duration: 700, easing: 'ease' })
-          .finished.then(function () { loader.remove(); });
-      }, 1400);
+      // Let the wordmark sit for a beat, fade it away, and only then reveal the page
+      anim(q('.loader__canvas'), [
+        { opacity: 1, transform: 'none', filter: 'blur(0)' },
+        { opacity: 0, transform: 'translateY(-12px)', filter: 'blur(6px)' }
+      ], { delay: 1750, duration: 550, easing: 'cubic-bezier(0.4, 0, 1, 1)' })
+        .finished.then(function () {
+          root.classList.remove('is-loading');
+          done();
+          anim(loader, [{ opacity: 1 }, { opacity: 0 }], { duration: 700, easing: 'ease' })
+            .finished.then(function () { loader.remove(); });
+        });
     });
   }
 
