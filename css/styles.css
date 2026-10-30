@@ -461,7 +461,7 @@ img { display: block; max-width: none; }
   border-radius: 8px;
   background: var(--surface-bar);
 }
-.products__tabs { display: flex; align-items: center; gap: 12px; }
+.products__tabs { display: flex; align-items: center; gap: 8px; }
 
 .tab {
   display: flex;
@@ -469,9 +469,9 @@ img { display: block; max-width: none; }
   justify-content: center;
   height: 48px;
   padding: 4px 2px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 6px;
   background: #fff;
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
 }
 .tab > img { width: 44px; height: 44px; }
 .tab--active {
