@@ -1012,16 +1012,13 @@ img { display: block; max-width: none; }
    HOVER STATES
    ========================================================================== */
 .btn,
-.split-btn,
-.tab {
+.split-btn {
   transition: scale 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .btn:hover,
 .btn:focus-visible,
 .split-btn:hover,
 .split-btn:focus-visible { scale: 1.04; }
-.tab:hover,
-.tab:focus-visible { scale: 1.05; }
 .split-btn:hover .split-btn__chip img,
 .split-btn:focus-visible .split-btn__chip img { translate: 40px 0; }
 .split-btn:hover .split-btn__chip img + img,
@@ -1033,7 +1030,8 @@ img { display: block; max-width: none; }
 .nav__item:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
 
 /* ==========================================================================
-   ENTRANCE ANIMATIONS (UI only — headings and copy stay put)
+   ENTRANCE ANIMATIONS (UI only — headings and copy stay put;
+   the products section has none)
    Hidden only when JS runs; js/main.js adds .is-in as elements scroll in.
    ========================================================================== */
 .js [data-reveal] {
@@ -1080,15 +1078,6 @@ img { display: block; max-width: none; }
   height: 860px;
   translate: -50% -50%;
 }
-.loader__lines {
-  position: absolute;
-  left: 0;
-  top: 0;
-  stroke: #181818;
-  stroke-opacity: 0.08;
-  stroke-width: 1;
-  clip-path: circle(0 at 710px 431px);
-}
 .loader__logo {
   position: absolute;
   left: 620px;
@@ -1118,5 +1107,5 @@ img { display: block; max-width: none; }
 @media (prefers-reduced-motion: reduce) {
   .js .loader { display: none; }
   .js [data-reveal] { opacity: var(--rest-opacity, 1); translate: none; scale: none; transition: none; }
-  .btn, .split-btn, .tab, .split-btn__chip img, .scale__ray { transition: none; }
+  .btn, .split-btn, .split-btn__chip img, .scale__ray { transition: none; }
 }
