@@ -314,7 +314,17 @@ img { display: block; max-width: none; }
   border-radius: 8px;
   overflow: hidden;
 }
-.split-btn__chip img { width: 20px; height: 20px; }
+.split-btn__chip img {
+  width: 20px;
+  height: 20px;
+  transition: translate 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.split-btn__chip img + img {
+  position: absolute;
+  left: calc(50% - 10px);
+  top: calc(50% - 10px);
+  translate: -40px 0;
+}
 
 /* Header ------------------------------------------------------------------ */
 .header {
@@ -406,7 +416,7 @@ img { display: block; max-width: none; }
   justify-content: center;
 }
 .logos__slot img { object-fit: cover; flex-shrink: 0; }
-.logos .is-dim { opacity: 0.5; }
+.logos .is-dim { opacity: 0.5; --rest-opacity: 0.5; }
 
 /* ==========================================================================
    PRODUCTS
@@ -983,6 +993,10 @@ img { display: block; max-width: none; }
 
 .scale__ray {
   position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
   left: calc(50% + 172.12px);
   top: -93px;
   width: 726.574px;
@@ -991,27 +1005,118 @@ img { display: block; max-width: none; }
   mix-blend-mode: darken;
 }
 .scale__ray img { width: 100%; height: 100%; }
+.scale__cell:hover .scale__ray { opacity: 1; }
 
-.scale__cursor {
-  position: absolute;
-  left: 235.67px;
-  top: 241px;
-  width: 24px;
-  height: 24px;
+
+/* ==========================================================================
+   HOVER STATES
+   ========================================================================== */
+.btn,
+.split-btn,
+.tab {
+  transition: scale 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.btn:hover,
+.btn:focus-visible,
+.split-btn:hover,
+.split-btn:focus-visible { scale: 1.04; }
+.tab:hover,
+.tab:focus-visible { scale: 1.05; }
+.split-btn:hover .split-btn__chip img,
+.split-btn:focus-visible .split-btn__chip img { translate: 40px 0; }
+.split-btn:hover .split-btn__chip img + img,
+.split-btn:focus-visible .split-btn__chip img + img { translate: 0 0; }
+
+.btn:focus-visible,
+.split-btn:focus-visible,
+.tab:focus-visible,
+.nav__item:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+
+/* ==========================================================================
+   ENTRANCE ANIMATIONS (UI only — headings and copy stay put)
+   Hidden only when JS runs; js/main.js adds .is-in as elements scroll in.
+   ========================================================================== */
+.js [data-reveal] {
+  opacity: 0;
+  translate: 0 24px;
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms),
+    translate 1s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms),
+    scale 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.js [data-reveal="fade"] {
+  translate: none;
+  transition: opacity 1.4s ease var(--d, 0ms);
+}
+.js [data-reveal="scale"] {
+  translate: none;
+  scale: 0.85;
+  transition:
+    opacity 0.6s ease var(--d, 0ms),
+    scale 0.9s cubic-bezier(0.34, 1.4, 0.64, 1) var(--d, 0ms);
+}
+/* --rest-opacity keeps elements that are semi-transparent in the design */
+.js [data-reveal].is-in { opacity: var(--rest-opacity, 1); translate: none; }
+.js [data-reveal="scale"].is-in { scale: none; }
+
+/* ==========================================================================
+   LOADER
+   ========================================================================== */
+.loader { display: none; }
+.js.is-loading { overflow: hidden; }
+.js .loader {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #fff;
   overflow: hidden;
 }
-.scale__cursor > div {
+.loader__canvas {
   position: absolute;
-  left: calc(50% + 0.71px);
-  top: calc(50% - 0.21px);
-  transform: translate(-50%, -50%);
-  width: 11.414px;
-  height: 17.578px;
+  left: 50%;
+  top: 50%;
+  width: 1440px;
+  height: 860px;
+  translate: -50% -50%;
 }
-.scale__cursor img {
+.loader__lines {
   position: absolute;
-  top: -4.55%;
-  left: -15.77%;
-  width: 131.54%;
-  height: 120.48%;
+  left: 0;
+  top: 0;
+  stroke: #181818;
+  stroke-opacity: 0.08;
+  stroke-width: 1;
+  clip-path: circle(0 at 710px 431px);
+}
+.loader__logo {
+  position: absolute;
+  left: 620px;
+  top: 390px;
+  width: 517px;
+  height: 81px;
+}
+.loader__logo svg { display: block; overflow: visible; }
+.loader__mark path,
+.loader__letter { opacity: 0; }
+.loader__counter {
+  position: absolute;
+  left: 660px;
+  top: 496px;
+  width: 120px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.56px;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(24, 24, 24, 0.55);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .loader { display: none; }
+  .js [data-reveal] { opacity: var(--rest-opacity, 1); translate: none; scale: none; transition: none; }
+  .btn, .split-btn, .tab, .split-btn__chip img, .scale__ray { transition: none; }
 }
